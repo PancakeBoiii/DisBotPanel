@@ -39,7 +39,7 @@ $("html").attr("lang", localeFile.cCode);
     refreshToken.html(`🔑 ${localeFile.buttons.editToken}`);
     refreshChat.html(`🔁 ${localeFile.buttons.refreshChat}`);
     $("#language").html(`🏳️ ${localeFile.buttons.changeLanguage}`);
-    leaveGuild.html(`🚪 ${localeFile.buttons.leave}`);
+    leaveGuild.html(`🚪  ${localeFile.buttons.leave}`);
     inviteBtn.html(`✉ ${localeFile.buttons.invite}`);
     send.html(`↩ ${localeFile.buttons.send}`);
     clearChat.html(`♻ ${localeFile.buttons.clearLastMessages}`);
