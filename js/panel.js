@@ -191,11 +191,11 @@ $("html").attr("lang", localeFile.cCode);
         }
 
         // Timestamp & mention button
-        html += `<span class="font-size-mini">${timestamp}</span> <button class="mini" data-value="<@!${userId}>" onclick="addText(this.dataset.value)">😐</button>`;
+        html += `<span class="font-size-mini">${timestamp}</span>`;
 
         // Delete button
         if ((guilds.val() === "DM" && message.author.id === client.user.id) || message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-            html += `<button class="mini" data-value="${message.id}" onclick="delMsg(this.dataset.value)">🗑️</button>`;
+            html += ``;
         }
         html += "</div>";
 
