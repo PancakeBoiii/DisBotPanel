@@ -223,7 +223,7 @@ $("html").attr("lang", localeFile.cCode);
             channel = user.dmChannel;
             let avatarUrl = user.avatarURL() || `./img/discord_defaults_avatars/${user.discriminator % 5}.png`;
             guildName.html(`<a href="${avatarUrl}" target="_blank"><img alt="" src="${avatarUrl}" class="avatarIMG"/></a> ${escapeHtml(user.username)}`);
-            $("#guildInfo").html(`${localeFile.text.userId} : (${user.id}) `);
+            $("#guildInfo").html(`${localeFile.text.userId} : (${user.id}) <button class="mini" data-value="<@!${user.id}>" onclick="addText(this.dataset.value)">@</button>`);
 
             channelNameLabel.text(`${localeFile.text.channelNameLabel} [${user.username}]`);
             channelName.html(`<img alt="" src="./img/icon/chat.png" class="avatarIMG"/> #${escapeHtml(user.username)}`);
@@ -292,12 +292,12 @@ $("html").attr("lang", localeFile.cCode);
             guildName.html(`<a href="${guild.iconURL() || "./img/icon/info.png"}" target="_blank"><img alt="" src="${guild.iconURL() || "./img/icon/info.png"}" class="avatarIMG"/></a> ${escapeHtml(guild.name)}`);
 
             // General information
-            html += `<div>${localeFile.infos.owner}: ${guild.owner.user.tag} </div><div>${localeFile.infos.members}: ${guild.members.cache.filter((member) => !member.user.bot).size}</div><div>${localeFile.infos.vChannels}: ${guild.channels.cache.filter((c) => c.type === "voice").size}</div><div>${localeFile.infos.tChannels}: ${guild.channels.cache.filter((c) => c.type === "text").size}</div><br>`;
+            html += `<div>${localeFile.infos.owner}: ${guild.owner.user.tag} <button data-value="<@!${guild.owner.user.id}>" class="mini" onclick="addText(this.dataset.value)">@</button></div><div>${localeFile.infos.members}: ${guild.members.cache.filter((member) => !member.user.bot).size}</div><div>${localeFile.infos.vChannels}: ${guild.channels.cache.filter((c) => c.type === "voice").size}</div><div>${localeFile.infos.tChannels}: ${guild.channels.cache.filter((c) => c.type === "text").size}</div><br>`;
 
             // Members button
             guild.members.cache.filter((member) => !member.user.bot).forEach((member) => {
                 let avatarUrl = member.user.avatarURL() || `./img/discord_defaults_avatars/${member.user.discriminator % 5}.png`;
-                guildMembers.push(`<div style="margin: 4px 0 4px 0"><a href="${avatarUrl}" target="_blank"><img alt="" style="display: inline;" class="avatarIMG" src="${avatarUrl}"/></a> ${member.user.tag} </div>`);
+                guildMembers.push(`<div style="margin: 4px 0 4px 0"><a href="${avatarUrl}" target="_blank"><img alt="" style="display: inline;" class="avatarIMG" src="${avatarUrl}"/></a> ${member.user.tag} <button data-value="<@!${member.user.id}>" onclick="addText(this.dataset.value)" class="mini">@</button></div>`);
             });
             html += `<button onclick='$("#guildMembers").toggle("fast")'>${localeFile.infos.members}</button><div id="guildMembers" style="display:none;">${guildMembers.join('')}</div>`;
 
